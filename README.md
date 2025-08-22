@@ -1,5 +1,6 @@
 # Newspring Email App📩
-Aplicação para envio de notícias por e-mail, consumindo dados de APIs.
+Aplicação automatizada para envio de notícias por e-mail, consumindo dados de **APIs** externas para entregar os principais destaques da semana diretamente na sua caixa de entrada.
+
 
 ## Funcionalidades
 
@@ -8,8 +9,8 @@ Aplicação para envio de notícias por e-mail, consumindo dados de APIs.
 - Enviar por e-mail automaticamente
 
 ## 🛠️ Tecnologias Utilizadas
-
-* Python
-* Requests (para consumir APIs)
-* JSON (para manipulação de dados)
-* Consumo de REST APIs
+- **Python** – linguagem principal
+- **Requests** – para consumir a API de notícias
+- **SMTP/SSL** – para envio seguro de e-mails pelo Gmail
+- **JSON** – para manipulação dos dados retornados da API
+- **REST API** – integração com serviços externos

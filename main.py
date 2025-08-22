@@ -1,11 +1,9 @@
 import requests
 from datetime import datetime, timedelta
+from email_sender import send_email
 
 # Put the date time of today
 today = datetime.now()
-
-# Convert the number of the day that we got to a string in the URL
-#today.strftime("%Y-%m-%d") (just a test)
 
 # Includes the last 7 days, putting today less the seven days with timedelta
 seven_days_before = today - timedelta(days=7)
@@ -27,9 +25,18 @@ email_body = ""
 
 # Access the article titles, descriptions and url with a loop that 
 # goes through all the articles, and enumerate them to organize
-for i, article in enumerate(content["articles"], 1):
+for i, article in enumerate(content["articles"][:10], 1):
     title = article.get("title", "(no title)")
     description = article.get("description", "(no description)")
     url = article.get("url", "")
 
-    email_body += f"{i}. {title}\n {description}\n {url}\n"
+    email_body += f"{i}. {title}\n{description}\n{url}\n\n"
+
+# Add subject and the message (email_body) to put in the function
+subject = "Tesla News of the Week"
+message = f"Subject: {subject}\n\n{email_body}\n"
+
+# Encode in UTF-8 to handle special characters correctly
+message = message.encode("utf-8")
+
+send_email(message)
